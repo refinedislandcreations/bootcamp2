@@ -13,6 +13,12 @@ html {
 /* For regular laptops and smaller screens */
 body {
     max-width: 100%; /* Allow it to expand to the full width of the screen */
+    @apply leading-none
+}
+
+
+p {
+    @apply leading-normal
 }
 
 /* For larger screens like flatscreen TVs */
