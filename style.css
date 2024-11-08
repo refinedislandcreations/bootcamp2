@@ -1,0 +1,715 @@
+/* ----------- Import Tailwind -----*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+    
+
+html {
+    scroll-behavior: smooth;
+      }
+
+
+/* For regular laptops and smaller screens */
+body {
+    max-width: 100%; /* Allow it to expand to the full width of the screen */
+    background-color: #001410; 
+    color:  #EEE0CB; 
+}
+
+/* For larger screens like flatscreen TVs */
+@media screen and (min-width: 1600px) {
+    body {
+        max-width: 1600px; /* Set a specific max-width for larger screens */
+        margin: 0 auto; /* Center the content horizontally */
+    }
+}
+
+svg {
+    width: 100%;
+    max-width: 100%;
+}
+
+.text-dark {
+    color: #001410;
+}
+
+.text-lightgreen {
+    color: #839788; 
+}
+
+.text-lightest-green {
+    color: #adbab0;
+}
+
+.bg-green-dark {
+    background-color: #697d6f;
+}
+
+.bg-offers {
+    background-color: #526156;
+}
+
+.bg-lightgreen {
+    background-color: #839788; 
+}
+
+.bg-lightest-green {
+    background-color: #adbab0;
+}
+
+.mid-title {
+    font-family: 'Lora', 'serif';
+    text-transform: uppercase;
+    font-size: 1.6rem; 
+    line-height: 2rem; /* 32px */
+  }
+
+.mixmatch-title {
+    font-family: 'Lora', 'serif';
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+.text-border {
+    border-left-width: 2px;
+    border-color: #839788;
+    margin-left: 5%;
+}
+
+.text-border-top {
+    border-top-width: 2px;
+    border-color: #839788;
+}
+
+.text-border-bottom {
+    border-bottom-width: 2px;
+    border-color: #839788;
+}
+
+
+.nav-height {
+    height: 1.9rem;
+}
+
+.nav-gap {
+    gap: 0.5rem;
+}
+
+
+/*Sliding text*/
+/* Container for centering the text-wrapper */
+.center-wrapper {
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    width: 100%; /* Full width */
+  }
+  
+  /* Grid container for centering and layout */
+  .text-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Two columns: first column auto width, second column flexible */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center content horizontally */
+    width: 100%; /* Full width */
+    height: 40px; /* Height of the container */
+    margin-top: 50px; /* Space above the container */
+  }
+  
+  /* Static text styling */
+  .static-text {
+    font-size: 1.25rem; 
+    color: #839788; 
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  /* Container for the animated text */
+  .animated-text-wrapper {
+    position: relative; /* Position relative for absolute positioning of child */
+    height: 100%; /* Fill the height of the container */
+    overflow: hidden; /* Hide overflow to ensure smooth scrolling */
+    font-family: 'Lora', 'serif';
+    text-transform: uppercase;
+    font-size: 1.3rem; 
+    color:  #EEE0CB; 
+  }
+  
+  /* Animated text */
+  .animated-text {
+    display: flex; /* Stack items vertically */
+    flex-direction: column; /* Stack items vertically */
+    position: absolute; /* Position absolutely to control visibility */
+    top: 0; /* Align to the top of the container */
+    left: 0; /* Align to the left of the container */
+    height: 100%; /* Fill the height of the container */
+    width: 100%; /* Fill the width of the container */
+    animation: slide 8s linear infinite; /* Apply animation */
+    font-family: 'Lora', 'serif';
+  }
+  
+  /* Individual animated text items */
+  .animated-text span {
+    display: block;
+    font-size: 2.35rem; /* 36px */
+    line-height: 2.5rem; /* 40px */
+    padding: 33px 20px; /* Space around text */
+    color:#EEE0CB; /* Change color to match your design */
+    height: 40px; /* Ensure height matches container */
+    line-height: 40px; /* Center text vertically */
+    white-space: nowrap; /* Prevent text wrapping */
+    font-style: italic;
+  }
+  
+  /* Animation for sliding text */
+  @keyframes slide {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-160px); } /* Adjust based on the number of words and their height */
+  }
+  
+  
+
+/* Header */
+
+.hamburger-wrapper {
+    cursor: pointer;
+    display: inline-block;
+    z-index: 1000;
+    position: fixed;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 20px;
+}
+
+.hamburger-menu span {
+    background-color: #EEE0CB;
+    height: 4px;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hamburger-menu.active span:first-child {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu {
+    display: none;
+    background-color: #001410; 
+    color: #EEE0CB; 
+    padding: 5%;
+    position: fixed;
+    top: 0;
+    left: 50%; /* Start positioning from the left center */
+    transform: translateX(-50%); /* Move the element back by half its width to center */
+    width: 100%; /* Full width menu */
+    max-width: 1536px; /* Limit maximum width */
+    text-align: left;
+    overflow-y: auto;
+    z-index: 50;
+    border-bottom: 3px solid #697d6f; /* Add bottom border */
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu a {
+    text-decoration: none; 
+    color: inherit; 
+    display: block;
+    font-weight: normal;
+    font-size: 1.1rem;
+}
+
+/* Ensure the mobile menu links are stacked vertically */
+.mobile-menu nav {
+    display: block; /* Stack links vertically */
+}
+
+/* Style individual links inside the mobile menu */
+.mobile-menu nav a {
+    display: block; /* Make sure each link is a block element */
+    margin-bottom: 10px; /* Add spacing between links if needed */
+}
+
+
+
+/* Footer nav should have vertical alignment */
+footer nav {
+    display: block; /* Ensure links are stacked */
+}
+
+/* Optional: Add some margin or padding to the links if needed */
+footer nav a {
+    margin-bottom: 10px; /* Adjust as needed for spacing */
+}
+
+
+
+/*design videos*/
+
+.video-container {
+    text-align: center; /* Center the video and button */
+}
+
+.responsive-video {
+    max-width: 100%; /* Keeps the video responsive */
+    height: 40vh; /* Desired height for the video */
+    display: block; /* Ensures the video acts as a block element */
+    margin: 0 auto; /* Centers the video horizontally */
+}
+
+.live-site-button {
+    display: inline-block; /* Allows it to behave like a button */
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: #697d6f; /* Button background color */
+    color: #EEE0CB; /* Button text color */
+    text-decoration: none; /* Remove the underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.live-site-button:hover {
+    background-color: #839689; /* Darker shade on hover */
+}
+
+
+.subtle {
+    opacity: .7;
+    font-size: 0.8rem;
+}
+
+.button {
+    padding: 0.5rem 2rem;
+    background-color: #839788;
+    color: #001410;
+    text-transform: uppercase;
+    appearance: none;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.header-cta {
+    display: inline-block; /* Ensure the button fits its content */
+    padding: 0.5rem 1.1rem;
+    background-color: #839788;
+    color: #001410;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    white-space: nowrap; /* Prevents text wrapping */
+    max-width: max-content; /* Ensures the button width never exceeds content */
+}
+
+
+
+.cta {
+    display: inline-block; /* Ensure the button fits its content */
+    padding: 0.5rem 1.1rem;
+    background-color: #839788;
+    color: #001410;
+    font-size: 1rem;
+    text-transform: uppercase;
+    appearance: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    white-space: nowrap; /* Prevents text wrapping */
+    max-width: max-content; /* Ensures the button width never exceeds content */
+}
+
+.cta:hover,
+.header-cta:hover {
+    background-color: #697d6f;
+    color: #EEE0CB;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.package-cta {
+    padding: 0.5rem 2rem;
+    background-color: #47544a;
+    color: #EEE0CB;
+    text-transform: uppercase;
+    appearance: none;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.package-cta:hover {
+    background-color: #839788;
+    color: #001410;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/*  Font Awesome Icons */
+.fa-regular,
+.fa-solid {
+    display: block;
+    text-align: center;
+}
+
+.overlay {
+    background-color: rgba(0,0,0,0.7);
+  }
+
+/* Accordion */
+.accordion .dt {
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space between text and icon */
+    align-items: center; /* Center items vertically */
+    padding-bottom: 0.5rem; /* Add padding for aesthetics */
+    position: relative; /* To help position the icon correctly */
+}
+
+/* Link Styles */
+.accordion .dt a {
+    color: #EEE0CB; /* Link color */
+    text-decoration: none; /* Remove underline */
+    flex: 1; /* Allow the link to take up available space */
+    position: relative; /* Required for the icon positioning */
+}
+
+/* Icon */
+.accordion .dt a::after {
+    content: "+"; /* Icon content */
+    position: absolute; /* Position absolutely */
+    right: 0; /* Align to the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    transition: transform 0.35s; /* Animation for icon rotation */
+    font-size: 1.5rem; /* Icon size */
+}
+
+/* Rotate when open */
+.accordion .dt a.open::after {
+    transform: translateY(-50%) rotateZ(45deg); /* Rotate when open */
+}
+
+
+
+.about-image {
+    max-height: 18rem;
+}
+
+
+  /* Whatsapp */
+  .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:20px;
+	right:20px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #737373;
+  z-index:100;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background and transform */
+}
+
+.my-float{
+	margin-top:12px;
+}
+
+/* Hover effect */
+.float:hover {
+    background-color: #004838; 
+    transform: scale(1.1); 
+}
+
+.float-contact{
+	width:60px;
+	height:50px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+    font-size:25px;
+	box-shadow: 2px 2px 3px #737373;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background and transform */
+}
+
+.float-contact:hover {
+    background-color: #004838; 
+    transform: scale(1.1); 
+}
+
+
+.mobile-menu nav {
+    padding: 1rem; /* Adjust padding as needed */
+}
+
+
+
+.icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Adjust icon size */
+    color: #000; /* Adjust icon color */
+}
+
+.icon-link i {
+    display: block;
+}
+
+
+
+.header-title-size {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
+}
+
+.header-subtitle-size {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75rem; /* 28px */
+}
+
+.logo-width-footer {
+    width: 10rem;
+}
+
+.portfolio-image-size {
+    min-height: 30vh;
+}
+
+
+
+
+
+@media (min-width:330px) {
+    .nav-height {
+        height: 2.1rem;
+    }
+}
+
+@media (min-width:360px) {
+    .nav-height {
+        height: 2.3rem;
+    }   
+
+    .portfolio-image-size {
+        min-height: 34vh;
+    }
+}
+
+@media (min-width:390px) {
+    .about-image {
+        max-height: 23rem;
+    }
+
+    .static-text {
+        font-size: 1.55rem;
+    }
+
+    .animated-text-wrapper {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width:420px) {
+    .nav-height {
+        height: 2.6rem;
+    }
+    
+    .nav-gap {
+        gap: 0.8rem;
+    }
+
+    .portfolio-image-size {
+        min-height: 38vh;
+    }
+}
+
+
+@media (min-width:450px) {
+    .header-title-size {
+        font-size: 2.875rem; 
+        line-height: 2.85rem;
+    }
+    
+    .header-subtitle-size {
+        font-size: 1.425rem;
+    }
+
+    .float-contact{
+        width:50px;
+    }
+}
+
+
+@media (min-width:480px) {
+    .nav-height {
+        height: 3rem;
+    }
+    
+    .about-image {
+        max-height: 27rem;
+    }
+
+    .portfolio-image-size {
+        min-height: 43vh;
+    }
+}
+
+
+@media (min-width:540px) {
+    .nav-height {
+        height: 3.3rem;
+    }
+
+    .static-text {
+        font-size: 2.05rem;
+    }
+
+    .animated-text-wrapper {
+        font-size: 2.1rem;
+    }
+
+    .portfolio-image-size {
+        min-height: 50vh;
+    }
+}
+
+
+@media (min-width:640px) {
+    .nav-height {
+        height: 3.7rem;
+    }
+
+    .mid-title {
+        font-size: 2rem; 
+    }
+
+    .static-text {
+        font-size: 1.45rem;
+    }
+
+    .animated-text-wrapper {
+        font-size: 1.4rem;
+    }
+
+    .responsive-video {
+        height: 60vh; /* Desired height for the video */
+    }
+
+    .mixmatch-title {
+        font-size: 1.7rem;
+        line-height: 2rem;
+      }
+}
+
+
+@media (min-width:702px) {
+    .nav-height {
+        height: 4.2rem;
+    }
+
+    .about-image {
+        max-height: 31rem;
+    }
+}
+
+
+@media (min-width:768px) {
+    .static-text {
+        font-size: 1.65rem;
+    }
+
+    .animated-text-wrapper {
+        font-size: 1.6rem;
+    }
+
+    
+    .portfolio-image-size {
+        min-height: 60vh;
+    }
+}
+
+
+@media (min-width:800px) {
+    .nav-height {
+        height: 4.8rem;
+    }
+}
+
+
+@media (min-width:850px) {
+      .static-text {
+        font-size: 1.85rem;
+      }
+      
+      .animated-text-wrapper {
+        font-size: 1.8rem;
+      }
+}
+
+
+@media (min-width:1000px) {
+      .static-text {
+        font-size: 1.85rem;
+      }
+      
+      .animated-text-wrapper {
+        font-size: 1.8rem;
+      }
+}
+
+@media (min-width:1024px) {
+    .header-title-size {
+        font-size: 3.675rem;
+        line-height: 3.85rem;
+    }
+    
+    .header-subtitle-size {
+        font-size: 1.625rem;
+    }
+
+    .portfolio-image-size {
+        min-height: 50vh;
+    }
+}
+
+@media (min-width:1318px) {
+    .portfolio-image-size {
+        min-height: 60vh;
+    }
+}
+
+
+
